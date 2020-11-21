@@ -157,7 +157,7 @@ describe('UserManagerService', () => {
         avatar: 'test',
         userId: 1
       } as UserDto;
-
+ 
     const responseMock = {
       response: {
         pcErr: ''
