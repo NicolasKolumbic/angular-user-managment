@@ -1,0 +1,19 @@
+:host {
+    padding: 1em;
+    display: block;
+}
+
+.upload-photo {
+    &_drop-container {
+        border: 2px dotted #0f5ed6;
+        color: #0f5ed6;
+        padding: 1em;
+    }
+}
+
+.upload-button{
+    border-radius: 0.5em;
+    padding: 0.5em;
+    color: white;
+    background-color: #5e8f32;
+}

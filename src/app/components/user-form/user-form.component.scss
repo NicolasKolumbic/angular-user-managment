@@ -1,0 +1,35 @@
+$errorColor: rgb(170, 12, 12);
+
+.has-error {
+    color: $errorColor;
+    input {
+        border-color: $errorColor; 
+    }
+}
+
+button:disabled {
+    border-color: gray;
+    color: gray;
+}
+
+.help-block{
+    height: 20px;
+    font-size: 0.8125em;
+}
+
+.picture {
+    background-color: gainsboro;
+    text-align: center;
+    padding: 1em;
+}
+
+.user-form {
+    &_label {
+        font-weight: 700;
+        width: 120px;
+        text-align: right;
+    }
+    &_avatar{
+        width: 115px;
+    }
+}

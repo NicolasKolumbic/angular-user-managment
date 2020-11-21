@@ -1,0 +1,29 @@
+<div class="upload-photo">
+  Seleccionar imagen para avatar
+  <label class="upload-button mt-1" for="inputFile">
+    <input
+      type="file"
+      id="inputFile"
+      ngFileSelect
+      [options]="options"
+      (uploadOutput)="onUploadOutput($event)"
+      [uploadInput]="uploadInput"
+      hidden
+    />
+    <span class="pi pi-upload"></span>
+    Subir desde equipo
+  </label>
+  <div
+    class="upload-photo_drop-container d-flex justify-content-center align-items-center"
+    ngFileDrop
+    [options]="options"
+    (uploadOutput)="onUploadOutput($event)"
+    [uploadInput]="uploadInput"
+    [ngClass]="{ 'is-drop-over': dragOver }"
+  >
+    <div class="text-center">
+      <span class="pi pi-upload"></span>
+      <p>o arrastre un imagen dentro del cuadro</p>
+    </div>  
+  </div>
+</div>

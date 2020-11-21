@@ -1,0 +1,63 @@
+<p-toast></p-toast>
+
+<div class="users-managment d-flex justify-content-center align-items-center">
+
+    <div class="users-managment_grid card">
+        <div class="d-flex justify-content-between mb-4">
+            <div>
+                <i class="pi pi-users" style="font-size: 2rem"></i> 
+                <span class="h2">
+                    <strong>
+                        Gestor de Usuarios
+                    </strong>  
+                </span>
+            </div>
+            <button pButton pRipple label="Nuevo usuario" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+        </div>
+
+        <p-table [value]="users"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} usuarios"
+        [rowsPerPageOptions]="[5,10,20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th *ngFor="let col of cols">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr>
+                    <td *ngFor="let col of cols">
+                        <div *ngIf="col.field === 'actions'">
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2 mr-2" (click)="editUser(user)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-error" (click)="deleteUser(user)"></button>
+                        </div>
+                        <div *ngIf="col.field === 'isActive'">
+                            <span class="pill"
+                             [class.active]="user[col.field]"
+                             [class.inactive]="!user[col.field]"
+                            >{{user[col.field] ? "Activo" : "Inactivo"}}</span>
+                        </div>
+                        <div *ngIf="col.field !== 'actions' && col.field !== 'isActive'">
+                            {{user[col.field]}}
+                        </div>
+                            
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-dialog [(visible)]="productDialog" [style]="{width: '80%'}" (onHide)="onClose(false)"  [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="header">
+        <h3><span class="pi pi-user mr-2" style="font-size: 2rem"></span>Nuevo Usuario</h3>
+    </ng-template>  
+    <ng-template pTemplate="content">
+        <app-user-form (closeDialogEvent)="onClose($event)" [user]="user" [isEdit]="isEdit"></app-user-form>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
